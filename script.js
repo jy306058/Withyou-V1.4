@@ -34,6 +34,7 @@ let state = {
 };
 
 let previewAudio = new Audio();
+const buttonAudio = new Audio('sound/버튼.mp3');
 
 function playCustomSound(type) {
     if (!state.settings.sounds) return;
@@ -418,6 +419,9 @@ function stopEngine() {
 }
 
 function pauseEngine() {
+    buttonAudio.currentTime = 0;
+    buttonAudio.play().catch(error => console.log('Audio playback error:', error));
+
     if (isTimerPaused) {
         startEngine();
     } else {
