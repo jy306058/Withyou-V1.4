@@ -37,9 +37,9 @@ let previewAudio = new Audio();
 const buttonAudio = new Audio('sound/버튼.mp3');
 const resetAudio = new Audio('sound/리셋.mp3');
 const clickAudio = new Audio('sound/딱.mp3'); 
-const newClickAudio = new Audio('sound/클릭.mp3'); 
+const newClickAudio = new Audio('sound/click.mp3'); 
 // [Audio Unlock] 전역 알람/리마인드 사운드 객체 선언
-const alarmSound = new Audio('sound/클릭.mp3'); 
+const alarmSound = new Audio('sound/click.mp3'); 
 
 function playClickSound() {
     clickAudio.currentTime = 0;
@@ -52,7 +52,7 @@ function playNewClickSound() {
         newClickAudio.play().catch(error => {
             console.log('New click sound play failed:', error);
             // 브라우저 정책 등에 의해 실패시 객체 재생성 시도 (재생성시 오동작 방지)
-            const retryAudio = new Audio('sound/클릭.mp3');
+            const retryAudio = new Audio('sound/click.mp3');
             retryAudio.play().catch(() => {});
         });
     } catch (e) {
