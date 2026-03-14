@@ -445,10 +445,8 @@ function getRandomMessage(profile, type) {
 
 function formatMessage(nickname, message) {
     if (!nickname) nickname = '사용자';
-    // 님 호칭을 항상 붙여줌
-    const nicknameWithHonorific = nickname + '님';
     const hasExclamation = message.endsWith('!');
-    const nickWithSymbol = hasExclamation ? `${nicknameWithHonorific}!` : nicknameWithHonorific;
+    const nickWithSymbol = hasExclamation ? `${nickname}!` : nickname;
     
     const formats = [
         hasExclamation ? `${nickWithSymbol} ${message}` : `${nickWithSymbol}, ${message}`, 
