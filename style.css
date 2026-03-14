@@ -1870,3 +1870,73 @@ input:checked + .slider:before {
 .page__header {
     margin-bottom: 50px !important; 
 }
+/* =========================================================
+   🔥 방어막 코드 (디자인 훼손 X, 렉 X)
+========================================================= */
+
+/* 1. 모든 기기 공통 강제 교정 (절대 안 깨짐) */
+.remind-bubble--active {
+    top: 85px !important; /* 팝업창 멱살 잡고 GNB 아래로 끌어내리기 */
+    z-index: 9999 !important; /* 무조건 맨 위에 보이게 락 걸기 */
+}
+
+.checklist__add-button {
+    white-space: nowrap !important; /* '추/가' 절대 금지. 한 줄로 묶기 */
+    flex-shrink: 0 !important; /* 화면 좁아져도 버튼 크기 찌그러짐 방지 */
+    min-width: max-content !important;
+}
+
+/* 2. 태블릿 & PC 환경 (가로 768px 이상) 안전빵 최적화 */
+@media (min-width: 768px) {
+    /* 상단 숨통 시원하게 틔우기 */
+    #page-timer .timer__section,
+    .page__header {
+        margin-top: 60px !important; 
+    }
+    
+    /* 뚱뚱하게 찢어지지 않도록 너비 제한하고 한가운데로 정렬 */
+    .app__main, 
+    .timer__container, 
+    .checklist,
+    .profile__grid,
+    .settings__container {
+        max-width: 600px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+}
+/* =========================================================
+   🔥 방어막 코드 (디자인 훼손 X, 렉 X)
+========================================================= */
+
+/* 1. 모든 기기 공통 강제 교정 (절대 안 깨짐) */
+.remind-bubble--active {
+    top: 85px !important; /* 팝업창 멱살 잡고 GNB 아래로 끌어내리기 */
+    z-index: 9999 !important; /* 무조건 맨 위에 보이게 락 걸기 */
+}
+
+.checklist__add-button {
+    white-space: nowrap !important; /* '추/가' 절대 금지. 한 줄로 묶기 */
+    flex-shrink: 0 !important; /* 화면 좁아져도 버튼 크기 찌그러짐 방지 */
+    min-width: max-content !important;
+}
+
+/* 2. 태블릿 & PC 환경 (가로 768px 이상) 안전빵 최적화 */
+@media (min-width: 768px) {
+    /* 상단 숨통 시원하게 틔우기 */
+    #page-timer .timer__section,
+    .page__header {
+        margin-top: 60px !important; 
+    }
+    
+    /* 뚱뚱하게 찢어지지 않도록 너비 제한하고 한가운데로 정렬 */
+    .app__main, 
+    .timer__container, 
+    .checklist,
+    .profile__grid,
+    .settings__container {
+        max-width: 600px !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+}
