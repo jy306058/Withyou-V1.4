@@ -371,16 +371,18 @@ img {
 }
 
 .timer__display {
+    font-family: 'Pretendard', ui-monospace, SFMono-Regular, Menlo, Monaco, monospace;
     font-size: 5.5rem; /* Slightly reduced */
     font-weight: 800;
-    font-variant-numeric: tabular-nums;
-    letter-spacing: -0.02em;
+    /* font-variant-numeric: tabular-nums; iOS 웹뷰 간격 벌어짐 방지 주석 처리 */
+    letter-spacing: -0.05em;
     color: var(--text-primary);
     line-height: 1;
     margin-bottom: 15px;
     display: flex;
     justify-content: center;
     align-items: center;
+    text-align: center;
     min-height: 120px;
 }
 
@@ -421,11 +423,11 @@ img {
 /* 모바일 최우선 반응형: 타이머 폰트 유연화 */
 @media (max-width: 480px) {
     .timer__display {
-        font-size: 2.8rem;
+        font-size: 4rem;
         min-height: 80px;
     }
     .timer__input-split {
-        font-size: 2.8rem;
+        font-size: 4rem;
     }
 }
 
