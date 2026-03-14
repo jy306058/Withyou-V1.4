@@ -500,9 +500,19 @@ function renderTimer() {
     const container = document.getElementById('timer-container');
     const lapContainer = document.getElementById('lap-container');
     const lapButton = document.getElementById('timer-lap');
+    const quickSettingBtn = document.getElementById('timer-quick-setting-btn');
+    const quickSettingPanel = document.getElementById('timer-quick-settings-panel');
 
     lapContainer.style.display = 'none';
     lapButton.style.display = 'none';
+    // --- 설정 버튼 가시성 제어 ---
+    if (quickSettingBtn) {
+        quickSettingBtn.style.display = (currentMode === MODES.TIMER) ? 'inline-block' : 'none';
+    }
+    if (quickSettingPanel && currentMode !== MODES.TIMER) {
+        quickSettingPanel.style.display = 'none';
+    }
+
     container.classList.remove('timer__container--focus', 'timer__container--break', 'timer__container--long-break');
 
     let currentSeconds = 0;
