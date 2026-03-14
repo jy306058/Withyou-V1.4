@@ -36,6 +36,12 @@ let state = {
 let previewAudio = new Audio();
 const buttonAudio = new Audio('sound/버튼.mp3');
 const resetAudio = new Audio('sound/리셋.mp3');
+const clickAudio = new Audio('sound/딱.mp3'); // 추가
+
+function playClickSound() {
+    clickAudio.currentTime = 0;
+    clickAudio.play().catch(error => console.log('Click sound play failed:', error));
+}
 
 function playCustomSound(type) {
     if (!state.settings.sounds) return;
@@ -789,8 +795,9 @@ function pauseEngine() {
 }
 
 function resetEngine() {
-    resetAudio.currentTime = 0;
-    resetAudio.play().catch(error => console.log('Audio playback error:', error));
+    // 사용자가 타이머 수치 직접 입력 후 리셋이 호출되므로 딱.mp3로 변경 (사용자 요청)
+    clickAudio.currentTime = 0;
+    clickAudio.play().catch(error => console.log('Audio playback error:', error));
 
     stopEngine();
     remindCounter = 0; // 🔥 카운터 꼬임 방지
@@ -1027,11 +1034,15 @@ function setupEventListeners() {
     // Standard listeners are maintained for redundancy, 
     // but index.html now uses global showPage directly for GNB to avoid any capture issue.
     const navProfiles = document.getElementById('nav-profiles');
-    if (navProfiles) navProfiles.onclick = () => window.showPage('page-profiles');
+    if (navProfiles) navProfiles.onclick = () => {
+        playClickSound();
+        window.showPage('page-profiles');
+    };
     
     const navSettings = document.getElementById('nav-settings');
     if (navSettings) {
         navSettings.onclick = () => {
+            playClickSound();
             window.showPage('page-settings');
             if (state.settings.sounds) {
                 const sStart = document.querySelector(`input[name="sound-start"][value="${state.settings.sounds.start}"]`);
@@ -1045,12 +1056,18 @@ function setupEventListeners() {
     }
     
     const navMain = document.getElementById('nav-main');
-    if (navMain) navMain.onclick = () => window.showPage('page-timer');
+    if (navMain) navMain.onclick = () => {
+        playClickSound();
+        window.showPage('page-timer');
+    };
     
     document.getElementById('timer-start').onclick = startEngine;
     document.getElementById('timer-pause').onclick = pauseEngine;
     document.getElementById('timer-reset').onclick = resetEngine;
-    document.getElementById('timer-lap').onclick = handleLap;
+    document.getElementById('timer-lap').onclick = () => {
+        playClickSound();
+        handleLap();
+    };
 
     document.querySelectorAll('.timer__mode-button').forEach(btn => {
         btn.onclick = () => setMode(btn.dataset.mode);
@@ -1172,6 +1189,7 @@ function setupEventListeners() {
     // Settings Navigation Tabs
     document.querySelectorAll('[data-settings-tab]').forEach(btn => {
         btn.onclick = () => {
+            playClickSound();
             document.querySelectorAll('[data-settings-tab]').forEach(b => b.classList.remove('settings__tab-btn--active'));
             btn.classList.add('settings__tab-btn--active');
             document.querySelectorAll('.settings__panel').forEach(p => p.style.display = 'none');
@@ -1273,6 +1291,7 @@ function setupEventListeners() {
                 alert('타이머가 정지된 상태에서만 설정할 수 있습니다.');
                 return;
             }
+            playClickSound();
             const isVisible = quickSettingPanel.style.display === 'block';
             quickSettingPanel.style.display = isVisible ? 'none' : 'block';
         };
