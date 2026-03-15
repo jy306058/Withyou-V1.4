@@ -524,9 +524,10 @@ img {
 .timer__lap-container {
     margin-top: 25px;
     padding-top: 20px;
+    padding-bottom: 80px; /* 하단 네비게이션 바가림 방지 */
     border-top: 1px solid var(--border-color);
     text-align: left;
-    max-height: 200px;
+    max-height: 280px; /* 공간 확보를 위해 조금 더 키움 */
     overflow-y: auto;
 }
 
